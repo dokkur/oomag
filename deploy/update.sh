@@ -11,6 +11,7 @@ export $(cat .env | xargs)
 export KEY_NAME=id_rsa_$PROJECT_NAME
 export KEY_PATH=${SSH_BASEPATH}/$KEY_NAME
 GIT_SSH_COMMAND="ssh -i $KEY_PATH" git pull origin $PROJECT_BRANCH
+dotenv bundle install --without development test
 dotenv bundle exec rails db:migrate
 dotenv bundle exec rake assets:precompile
 sudo /opt/nginx/sbin/nginx -s reload

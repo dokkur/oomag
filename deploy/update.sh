@@ -14,4 +14,5 @@ GIT_SSH_COMMAND="ssh -i $KEY_PATH" git pull origin $PROJECT_BRANCH
 dotenv bundle install --without development test
 dotenv bundle exec rails db:migrate
 dotenv bundle exec rake assets:precompile
+sudo service sidekiq-$PROJECT_NAME restart
 sudo /opt/nginx/sbin/nginx -s reload
